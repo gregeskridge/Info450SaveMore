@@ -50,7 +50,7 @@ class Savings : public BankAccount
 
 	void displayAccountInfo()
 	{
-		printf("Account Number: %d\nAccountBalance: $%6.2f\nInterest Rate: 2.2%f\n",
+		printf("Account Number: %d\nAccountBalance: $%6.2f\nInterest Rate: %.2f\n",
 			accountNumber, accountBalance, interestRate);
 	}
 };
@@ -82,7 +82,7 @@ class Checking : public BankAccount
 
 	void displayAccountInfo()
 	{
-		printf("Account Number: %d\nAccountBalance: $%6.2f\nLow Balance Fee Assessed: 2.2%f\n",
+		printf("Account Number: %d\nAccountBalance: $%6.2f\nLow Balance Fee Assessed: %.2f\n",
 			accountNumber, accountBalance, lowBalanceFee);
 	}
 };
@@ -118,7 +118,7 @@ class CertificateOfDeposit : public BankAccount
 
 	void displayAccountInfo()
 	{
-		printf("Account Number: %d\nAccountBalance: $%6.2f\nAccount Term: %d\nInterest Rate: 2.2%f\n",
+		printf("Account Number: %d\nAccountBalance: $%6.2f\nAccount Term: %d\nInterest Rate: %.2f\n",
 			accountNumber, accountBalance, accountTerm, interestRate);
 	}
 };
@@ -170,6 +170,7 @@ int main()
 
 	for (int i = 0; i < numberOfAccounts; i++)
 	{
+		printf("\n\tAccount %d Information\n", i + 1);
 		accountPtr[i]->displayAccountInfo();
 	}
 
