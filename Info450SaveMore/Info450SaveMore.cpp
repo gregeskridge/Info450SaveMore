@@ -23,10 +23,12 @@ public:
 
 	virtual void getAccountInfo() = 0;
 	virtual void displayAccountInfo() = 0;
+	virtual void calculateMonthlyInterest() = 0;
 };
 
 class Savings : public BankAccount
 {
+
 	void getAccountInfo()
 	{
 		cout << "Please enter your account number: ";
@@ -52,6 +54,11 @@ class Savings : public BankAccount
 	{
 		printf("Account Number: %d\nAccountBalance: $%6.2f\nInterest Rate: %.2f\n",
 			accountNumber, accountBalance, interestRate);
+	}
+
+	void calculateMonthlyInterest()
+	{
+
 	}
 };
 
