@@ -383,6 +383,7 @@ int main()
 
 	for (int i = 0; i < numberOfAccounts; i++)
 	{
+		cout << " " << endl;
 		cout << "What type of account would you like to open? " << endl;
 		cout << "Enter A for Savings" << endl;
 		cout << "Enter B for Checking" << endl;
