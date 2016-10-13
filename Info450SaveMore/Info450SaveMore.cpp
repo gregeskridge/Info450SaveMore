@@ -208,7 +208,7 @@ class Checking : public BankAccount
 	void makeWithdrawal()
 	{
 		double withdrawalAmount = 0.00;
-		cout << "How much money would you like to withdraw from your Savings account? ";
+		cout << "How much money would you like to withdraw from your Checking account? ";
 		cin >> withdrawalAmount;
 		cin.clear();
 		cin.ignore();
@@ -324,13 +324,13 @@ class CertificateOfDeposit : public BankAccount
 
 	void orderChecks()
 	{
-		cout << "We're sorry, but checks cannot be ordered for a Savings account." << endl;
+		cout << "We're sorry, but checks cannot be ordered for a CD account." << endl;
 	}
 
 	void makeWithdrawal()
 	{
 		double withdrawalAmount = 0.00;
-		cout << "How much money would you like to withdraw from your Savings account? ";
+		cout << "How much money would you like to withdraw from your CD account? ";
 		cin >> withdrawalAmount;
 		cin.clear();
 		cin.ignore();
