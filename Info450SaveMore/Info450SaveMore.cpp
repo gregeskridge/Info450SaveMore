@@ -122,16 +122,17 @@ class Savings : public BankAccount
 	void makeWithdrawal()
 	{
 		double withdrawalAmount = 0.00;
-		cout << "How much money would you like to withdraw from your Savings account? ";
+		cout << "How much money would you like to withdraw from your Savings account? " << endl;
+		cout << "Reminder: There is a $2.00 fee for Savings withdrawals." << endl;
 		cin >> withdrawalAmount;
 		cin.clear();
 		cin.ignore();
 
-		if (withdrawalAmount <= accountBalance)
+		if (withdrawalAmount <= (accountBalance - 2.00))
 		{
 			cout << "Your previous account balance was: $" << accountBalance << endl;
 
-			accountBalance -= withdrawalAmount;
+			accountBalance = accountBalance - withdrawalAmount - 2.00;
 
 			cout << "$" << withdrawalAmount << " has been withdrawn from your account." << endl;
 			cout << "Your new account balance is: $" << accountBalance << endl;
@@ -443,7 +444,7 @@ int main()
 
 			if (whichAccount > numberOfAccounts)
 			{
-				cout << "That's an invalid account number.  You don't even have that may accounts." << endl;
+				cout << "That's an invalid account number.  You don't even have that many accounts." << endl;
 				cout << "You think this is a Wells Fargo app or something?" << endl;
 				cout << "Just for doing that, I'm making you go back to the previous menu." << endl;
 			}
@@ -466,7 +467,7 @@ int main()
 
 			if (whichAccount > numberOfAccounts)
 			{
-				cout << "That's an invalid account number.  You don't even have that may accounts." << endl;
+				cout << "That's an invalid account number.  You don't even have that many accounts." << endl;
 				cout << "You think this is a Wells Fargo app or something?" << endl;
 				cout << "Just for doing that, I'm making you go back to the previous menu." << endl;
 			}
@@ -499,7 +500,7 @@ int main()
 
 			if (whichAccount > numberOfAccounts)
 			{
-				cout << "That's an invalid account number.  You don't even have that may accounts." << endl;
+				cout << "That's an invalid account number.  You don't even have that many accounts." << endl;
 				cout << "You think this is a Wells Fargo app or something?" << endl;
 				cout << "Just for doing that, I'm making you go back to the previous menu." << endl;
 			}
@@ -513,7 +514,7 @@ int main()
 
 		else if (doAnswer == 'w' || doAnswer == 'W')
 		{
-			cout << "For which account would you like to view an amortization schedule?" << endl;
+			cout << "For which account would you like to withdraw money?" << endl;
 			cout << "Enter one digit.  For example, enter 2 for Account Number 2." << endl;
 			cin >> whichAccount;
 			cin.clear();
@@ -521,7 +522,7 @@ int main()
 
 			if (whichAccount > numberOfAccounts)
 			{
-				cout << "That's an invalid account number.  You don't even have that may accounts." << endl;
+				cout << "That's an invalid account number.  You don't even have that many accounts." << endl;
 				cout << "You think this is a Wells Fargo app or something?" << endl;
 				cout << "Just for doing that, I'm making you go back to the previous menu." << endl;
 			}
