@@ -24,6 +24,8 @@ public:
 	virtual void getAccountInfo() = 0;
 	virtual void displayAccountInfo() = 0;
 	virtual void calculateMonthlyInterest() = 0;
+	virtual void orderChecks() = 0;
+	virtual void makeWithdrawal() = 0;
 };
 
 class Savings : public BankAccount
@@ -112,6 +114,38 @@ class Savings : public BankAccount
 		}
 	}
 
+	void orderChecks()
+	{
+		cout << "We're sorry, but checks cannot be ordered for a Savings account." << endl;
+	}
+
+	void makeWithdrawal()
+	{
+		double withdrawalAmount = 0.00;
+		cout << "How much money would you like to withdraw from your Savings account? ";
+		cin >> withdrawalAmount;
+		cin.clear();
+		cin.ignore();
+
+		if (withdrawalAmount <= accountBalance)
+		{
+			cout << "Your previous account balance was: $" << accountBalance << endl;
+
+			accountBalance -= withdrawalAmount;
+
+			cout << "$" << withdrawalAmount << "has been withdrawn from your account." << endl;
+			cout << "Your new account balance is: $" << accountBalance << endl;
+
+
+		}
+		
+		else
+		{
+			cout << "I'm sorry.  You don't have enough money in your account to complete the withdrawal." << endl;
+			cout << "But you knew that, didn't you?" << endl;
+			cout << "Have fun going back to the previous menu." << endl;
+		}
+	}
 };
 
 class Checking : public BankAccount
@@ -149,6 +183,18 @@ class Checking : public BankAccount
 	{
 		cout << "We're sorry, but Checking Accounts do not earn interest." << endl;
 	}
+
+	void orderChecks()
+	{
+		cout << "Checks have been ordered." << endl;
+		cout << "There was a $15.00 check-order fee deducted from your account." << endl;
+		cout << "Your previous account balance was $" << accountBalance << endl;
+
+		accountBalance -= 15.00;
+
+		cout << "Your new account balance is $" << accountBalance << endl;
+	}
+
 };
 
 class CertificateOfDeposit : public BankAccount
@@ -226,6 +272,10 @@ class CertificateOfDeposit : public BankAccount
 		}
 	}
 
+	void orderChecks()
+	{
+		cout << "We're sorry, but checks cannot be ordered for a Savings account." << endl;
+	}
 };
 
 int main()
@@ -351,7 +401,7 @@ int main()
 
 		else if (doAnswer == 'o' || doAnswer == 'O')
 		{
-			cout << "For which account would you like to view an amortization schedule?" << endl;
+			cout << "For which account would you like to order checks?" << endl;
 			cout << "Enter one digit.  For example, enter 2 for Account Number 2." << endl;
 			cin >> whichAccount;
 			cin.clear();
@@ -367,7 +417,7 @@ int main()
 			else
 			{
 				whichAccount -= 1;
-				accountPtr[whichAccount]->calculateMonthlyInterest();
+				accountPtr[whichAccount]->orderChecks();
 			}
 		}
 
@@ -389,7 +439,7 @@ int main()
 			else
 			{
 				whichAccount -= 1;
-				accountPtr[whichAccount]->calculateMonthlyInterest();
+				accountPtr[whichAccount]->makeWithdrawal();
 			}
 		}
 
