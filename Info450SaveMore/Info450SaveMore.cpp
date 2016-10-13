@@ -423,6 +423,7 @@ int main()
 	while (doAnswer == 'v' || doAnswer == 'V' || doAnswer == 'd' || doAnswer == 'D' || doAnswer == 'o' ||
 		doAnswer == 'O' || doAnswer == 'w' || doAnswer == 'W')
 	{
+		cout << " " << endl;
 		cout << "What would you like to do?" << endl;
 		cout << "V for View Amortization Schedule for an Account" << endl;
 		cout << "D for Display Information for an Account" << endl;
