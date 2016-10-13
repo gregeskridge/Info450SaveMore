@@ -133,7 +133,7 @@ class Savings : public BankAccount
 
 			accountBalance -= withdrawalAmount;
 
-			cout << "$" << withdrawalAmount << "has been withdrawn from your account." << endl;
+			cout << "$" << withdrawalAmount << " has been withdrawn from your account." << endl;
 			cout << "Your new account balance is: $" << accountBalance << endl;
 
 			if (accountBalance < 10000)
@@ -424,7 +424,7 @@ int main()
 	{
 		cout << "What would you like to do?" << endl;
 		cout << "V for View Amortization Schedule for an Account" << endl;
-		cout << "D for Display Information for an Accounts" << endl;
+		cout << "D for Display Information for an Account" << endl;
 		cout << "O for Order Checks for a Checking Account" << endl;
 		cout << "W for Withdraw Money from an Account" << endl;
 		cin >> doAnswer;
@@ -471,19 +471,21 @@ int main()
 				cout << "Just for doing that, I'm making you go back to the previous menu." << endl;
 			}
 			
-			else if (whichAccount = 0)
+			else if (whichAccount > 0)
+			{
+				cout << " " << endl;
+				cout << "Details for Account Number " << whichAccount << endl;
+				whichAccount -= 1;
+				accountPtr[whichAccount]->displayAccountInfo();
+			}
+
+			else
 			{
 				for (int i = 0; i < numberOfAccounts; i++)
 				{
 					printf("\n\tAccount %d Information\n", i + 1);
 					accountPtr[i]->displayAccountInfo();
 				}
-			}
-			
-			else
-			{
-				whichAccount -= 1;
-				accountPtr[whichAccount]->displayAccountInfo();
 			}
 		}
 
