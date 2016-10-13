@@ -136,7 +136,17 @@ class Savings : public BankAccount
 			cout << "$" << withdrawalAmount << "has been withdrawn from your account." << endl;
 			cout << "Your new account balance is: $" << accountBalance << endl;
 
+			if (accountBalance < 10000)
+			{
+				interestRate = 0.01;
+			}
+			else
+			{
+				interestRate = 0.02;
+			}
 
+			cout << "Your interest rate is: " << interestRate << endl;
+			cout << "Thank you for being our favorite (and only) customer!" << endl;
 		}
 		
 		else
@@ -195,6 +205,46 @@ class Checking : public BankAccount
 		cout << "Your new account balance is $" << accountBalance << endl;
 	}
 
+	void makeWithdrawal()
+	{
+		double withdrawalAmount = 0.00;
+		cout << "How much money would you like to withdraw from your Savings account? ";
+		cin >> withdrawalAmount;
+		cin.clear();
+		cin.ignore();
+
+		if (withdrawalAmount <= accountBalance)
+		{
+			cout << "Your previous account balance was: $" << accountBalance << endl;
+
+			accountBalance -= withdrawalAmount;
+
+			cout << "$" << withdrawalAmount << "has been withdrawn from your account." << endl;
+			cout << "Your post-withdrawal account balance is: $" << accountBalance << endl;
+
+			if (accountBalance < 500)
+			{
+				accountBalance -= 5.00;
+				cout << "Since your account has fallen below $500, a $5.00 was charged to your account." << endl;
+				cout << "Your new account balance is: $" << accountBalance << endl;
+
+			}
+			else
+			{
+
+			}
+
+			cout << "Your interest rate is: " << interestRate << endl;
+			cout << "Thank you for being our favorite (and only) customer!" << endl;
+		}
+
+		else
+		{
+			cout << "I'm sorry.  You don't have enough money in your account to complete the withdrawal." << endl;
+			cout << "But you knew that, didn't you?" << endl;
+			cout << "Have fun going back to the previous menu." << endl;
+		}
+	}
 };
 
 class CertificateOfDeposit : public BankAccount
@@ -275,6 +325,44 @@ class CertificateOfDeposit : public BankAccount
 	void orderChecks()
 	{
 		cout << "We're sorry, but checks cannot be ordered for a Savings account." << endl;
+	}
+
+	void makeWithdrawal()
+	{
+		double withdrawalAmount = 0.00;
+		cout << "How much money would you like to withdraw from your Savings account? ";
+		cin >> withdrawalAmount;
+		cin.clear();
+		cin.ignore();
+
+		if (withdrawalAmount <= accountBalance)
+		{
+			double earlyWithdrawalFee = accountBalance * 0.10;
+
+			cout << "Your previous account balance was: $" << accountBalance << endl;
+
+			accountBalance -= withdrawalAmount;
+
+			cout << "$" << withdrawalAmount << "has been withdrawn from your account." << endl;
+			cout << "Your post-withdrawal account balance is: $" << accountBalance << endl;
+
+			cout << "A 10 percent fee was charged to your original balance as an early-withdrawal penalty!" << endl;
+			cout << "SHAME SHAME SHAME!  Learn to save your money!  You're supposed to be an adult!" << endl;
+
+			accountBalance -= earlyWithdrawalFee;
+			cout << "After a fee of $" << earlyWithdrawalFee << ", your new account balance is: " 
+				<< accountBalance << endl;
+
+			cout << "Your interest rate is: " << interestRate << endl;
+			cout << "Thank you for being our favorite (and only) customer!" << endl;
+		}
+
+		else
+		{
+			cout << "I'm sorry.  You don't have enough money in your account to complete the withdrawal." << endl;
+			cout << "But you knew that, didn't you?" << endl;
+			cout << "Have fun going back to the previous menu." << endl;
+		}
 	}
 };
 
