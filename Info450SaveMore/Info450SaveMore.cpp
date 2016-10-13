@@ -280,19 +280,123 @@ int main()
 		accountPtr[i]->displayAccountInfo();
 	}
 
+	
 	while (doAnswer == 'v' || doAnswer == 'V' || doAnswer == 'd' || doAnswer == 'D' || doAnswer == 'o' ||
 		doAnswer == 'O' || doAnswer == 'w' || doAnswer == 'W')
 	{
 		cout << "What would you like to do?" << endl;
 		cout << "V for View Amortization Schedule for an Account" << endl;
-		cout << "D for Display Information for All Accounts" << endl;
+		cout << "D for Display Information for an Accounts" << endl;
 		cout << "O for Order Checks for a Checking Account" << endl;
 		cout << "W for Withdraw Money from an Account" << endl;
 		cin >> doAnswer;
 		cin.clear();
 		cin.ignore();
 
-		if
+		int whichAccount = 0;
+
+		if (doAnswer == 'v' || doAnswer == 'V')
+		{
+			cout << "For which account would you like to view an amortization schedule?" << endl;
+			cout << "Enter one digit.  For example, enter 2 for Account Number 2." << endl;
+			cin >> whichAccount;
+			cin.clear();
+			cin.ignore();
+
+			if (whichAccount > numberOfAccounts)
+			{
+				cout << "That's an invalid account number.  You don't even have that may accounts." << endl;
+				cout << "You think this is a Wells Fargo app or something?" << endl;
+				cout << "Just for doing that, I'm making you go back to the previous menu." << endl;
+			}
+
+			else
+			{
+				whichAccount -= 1;
+				accountPtr[whichAccount]->calculateMonthlyInterest();
+			}
+		}
+
+		else if (doAnswer == 'd' || doAnswer == 'D')
+		{
+			cout << "For which account would you like to display information?" << endl;
+			cout << "Enter one digit.  For example, enter 2 for Account Number 2." << endl;
+			cout << "You may also select 0 to display all accounts." << endl;
+			cin >> whichAccount;
+			cin.clear();
+			cin.ignore();
+
+			if (whichAccount > numberOfAccounts)
+			{
+				cout << "That's an invalid account number.  You don't even have that may accounts." << endl;
+				cout << "You think this is a Wells Fargo app or something?" << endl;
+				cout << "Just for doing that, I'm making you go back to the previous menu." << endl;
+			}
+			
+			else if (whichAccount = 0)
+			{
+				for (int i = 0; i < numberOfAccounts; i++)
+				{
+					printf("\n\tAccount %d Information\n", i + 1);
+					accountPtr[i]->displayAccountInfo();
+				}
+			}
+			
+			else
+			{
+				whichAccount -= 1;
+				accountPtr[whichAccount]->displayAccountInfo();
+			}
+		}
+
+		else if (doAnswer == 'o' || doAnswer == 'O')
+		{
+			cout << "For which account would you like to view an amortization schedule?" << endl;
+			cout << "Enter one digit.  For example, enter 2 for Account Number 2." << endl;
+			cin >> whichAccount;
+			cin.clear();
+			cin.ignore();
+
+			if (whichAccount > numberOfAccounts)
+			{
+				cout << "That's an invalid account number.  You don't even have that may accounts." << endl;
+				cout << "You think this is a Wells Fargo app or something?" << endl;
+				cout << "Just for doing that, I'm making you go back to the previous menu." << endl;
+			}
+
+			else
+			{
+				whichAccount -= 1;
+				accountPtr[whichAccount]->calculateMonthlyInterest();
+			}
+		}
+
+		else if (doAnswer == 'w' || doAnswer == 'W')
+		{
+			cout << "For which account would you like to view an amortization schedule?" << endl;
+			cout << "Enter one digit.  For example, enter 2 for Account Number 2." << endl;
+			cin >> whichAccount;
+			cin.clear();
+			cin.ignore();
+
+			if (whichAccount > numberOfAccounts)
+			{
+				cout << "That's an invalid account number.  You don't even have that may accounts." << endl;
+				cout << "You think this is a Wells Fargo app or something?" << endl;
+				cout << "Just for doing that, I'm making you go back to the previous menu." << endl;
+			}
+
+			else
+			{
+				whichAccount -= 1;
+				accountPtr[whichAccount]->calculateMonthlyInterest();
+			}
+		}
+
+		else
+		{
+
+		}
 	}
 
     return 0;
